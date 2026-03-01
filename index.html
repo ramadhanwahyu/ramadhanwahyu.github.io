@@ -1,201 +1,228 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wahyu Luthfi Ramadhan | Web Developer</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wahyu Luthfi Ramadhan | Web Developer</title>
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- Tailwind CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    }
-                }
-            }
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          }
         }
-    </script>
+      }
+    }
+  </script>
 </head>
 
-<body class="font-sans text-slate-800 bg-white">
+<body class="font-sans text-slate-800 bg-white scroll-smooth">
 
-    <!-- ================= HERO SECTION ================= -->
-    <section class="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-indigo-50 py-32">
-        
-        <!-- Blurred Gradient Blob -->
-        <div class="absolute -top-24 -left-24 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-40"></div>
-        <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-indigo-200 rounded-full mix-blend-multiply filter blur-3xl opacity-40"></div>
+  <!-- ================= HERO SECTION ================= -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+    
+    <!-- Decorative Blur -->
+    <div class="absolute -top-32 -left-32 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply blur-3xl opacity-30"></div>
+    <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-indigo-200 rounded-full mix-blend-multiply blur-3xl opacity-30"></div>
 
-        <div class="relative max-w-5xl mx-auto px-6 text-center">
-            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight text-slate-900">
-                Wahyu Luthfi Ramadhan
-            </h1>
-
-            <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-slate-700">
-                Web Developer – Website & Web Application Custom
-            </h2>
-
-            <p class="max-w-2xl mx-auto text-lg text-slate-600 mb-10 leading-relaxed">
-                Menawarkan jasa website company profile dan web application custom 
-                berbasis Django untuk membantu bisnis dan institusi 
-                bertransformasi secara digital dengan sistem yang modern dan efisien.
-            </p>
-
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="https://wa.me/62xxxxxxxxxx"
-                   class="px-8 py-3 rounded-full bg-slate-900 text-white hover:bg-slate-800 transition shadow-lg">
-                    Konsultasi Gratis
-                </a>
-                <a href="#layanan"
-                   class="px-8 py-3 rounded-full border border-slate-300 hover:bg-slate-100 transition">
-                    Lihat Layanan
-                </a>
-            </div>
+    <div class="relative max-w-7xl mx-auto px-6 py-32 grid md:grid-cols-2 gap-16 items-center">
+      
+      <!-- Text -->
+      <div>
+        <p class="text-sm uppercase tracking-widest text-indigo-600 font-semibold mb-4">
+          Wahyu Luthfi Ramadhan
+        </p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-slate-900">
+          Web Developer – Website & Web Application Custom
+        </h1>
+        <p class="mt-6 text-lg text-slate-600 leading-relaxed">
+          Menawarkan jasa pembuatan website company profile dan web application custom berbasis Django untuk membantu bisnis dan institusi membangun sistem digital yang profesional dan efisien.
+        </p>
+        <div class="mt-10 flex flex-wrap gap-4">
+          <a href="#contact" class="px-8 py-3 bg-indigo-600 text-white rounded-full font-medium shadow-lg hover:scale-105 transition duration-300">
+            Konsultasi Gratis
+          </a>
+          <a href="#services" class="px-8 py-3 border border-slate-300 text-slate-700 rounded-full font-medium hover:bg-slate-100 transition duration-300">
+            Lihat Layanan
+          </a>
         </div>
-    </section>
+      </div>
 
-    <!-- SVG Divider -->
-    <div class="-mt-1">
-        <svg viewBox="0 0 1440 100" class="w-full">
-            <path fill="#f8fafc" d="M0,64L60,74.7C120,85,240,107,360,101.3C480,96,600,64,720,64C840,64,960,96,1080,101.3C1200,107,1320,85,1380,74.7L1440,64V0H0Z"></path>
-        </svg>
+      <!-- Image -->
+      <div class="relative">
+        <img 
+          src="https://images.unsplash.com/photo-1498050108023-c5249f4df085"
+          alt="Laptop with website"
+          class="rounded-3xl shadow-2xl ring-1 ring-slate-200 hover:scale-105 transition duration-500"
+        >
+      </div>
+
     </div>
 
-    <!-- ================= ABOUT SECTION ================= -->
-    <section class="py-28 bg-slate-50">
-        <div class="max-w-3xl mx-auto px-6 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-8 text-slate-900">
-                Tentang Saya
-            </h2>
-            <p class="text-lg text-slate-600 leading-relaxed">
-                Dengan latar belakang analitis dan pendekatan sistematis, 
-                saya berfokus pada pengembangan sistem berbasis web yang stabil, 
-                terstruktur, dan scalable. Menggunakan Python dan Django, 
-                saya membantu bisnis serta institusi melakukan digitalisasi 
-                melalui website profesional dan sistem manajemen yang efisien.
-            </p>
+    <!-- SVG Divider -->
+    <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+      <svg class="relative block w-full h-24" viewBox="0 0 1440 100" preserveAspectRatio="none">
+        <path fill="#ffffff" d="M0,0 C480,100 960,0 1440,80 L1440,100 L0,100 Z"></path>
+      </svg>
+    </div>
+
+  </section>
+
+  <!-- ================= ABOUT SECTION ================= -->
+  <section class="py-28 bg-white">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <div class="h-1 w-20 mx-auto bg-gradient-to-r from-indigo-500 to-blue-500 rounded-full mb-8"></div>
+      <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
+        Tentang Saya
+      </h2>
+      <p class="text-slate-600 leading-relaxed text-lg">
+        Saya memiliki latar belakang analitis dan fokus pada pengembangan sistem berbasis web yang terstruktur dan efisien. Menggunakan Python & Django sebagai fondasi utama, saya membantu bisnis, sekolah, dan institusi dalam membangun sistem digital yang modern, scalable, dan mudah digunakan.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= PORTFOLIO SECTION ================= -->
+  <section class="py-28 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+          Portofolio
+        </h2>
+        <p class="text-slate-600 max-w-2xl mx-auto">
+          Beberapa contoh tampilan sistem dan website yang pernah saya kembangkan.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12">
+        <img 
+          src="https://images.unsplash.com/photo-1551288049-bebda4e38f71"
+          alt="Dashboard Screenshot"
+          class="rounded-3xl shadow-xl hover:scale-105 transition duration-500"
+        >
+        <img 
+          src="https://images.unsplash.com/photo-1460925895917-afdab827c52f"
+          alt="Website Screenshot"
+          class="rounded-3xl shadow-xl hover:scale-105 transition duration-500"
+        >
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SERVICES SECTION ================= -->
+  <section id="services" class="py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-slate-900">
+          Layanan
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-10">
+        
+        <div class="p-8 bg-white rounded-3xl shadow-lg ring-1 ring-slate-200 hover:-translate-y-2 transition duration-300">
+          <h3 class="text-xl font-semibold mb-4">Website Company Profile</h3>
+          <ul class="text-slate-600 space-y-2">
+            <li>• Desain profesional</li>
+            <li>• Responsif</li>
+            <li>• SEO friendly</li>
+          </ul>
         </div>
-    </section>
 
-    <!-- ================= SERVICES SECTION ================= -->
-    <section id="layanan" class="py-28 bg-white">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-slate-900">
-                Layanan
-            </h2>
-
-            <div class="grid gap-10 md:grid-cols-3">
-
-                <div class="p-8 rounded-3xl bg-white shadow-xl hover:scale-105 transition duration-300 ring-1 ring-slate-100">
-                    <h3 class="text-xl font-semibold mb-4 text-slate-900">
-                        Website Company Profile
-                    </h3>
-                    <ul class="space-y-2 text-slate-600">
-                        <li>Desain profesional</li>
-                        <li>Responsif</li>
-                        <li>SEO friendly</li>
-                    </ul>
-                </div>
-
-                <div class="p-8 rounded-3xl bg-white shadow-xl hover:scale-105 transition duration-300 ring-1 ring-slate-100">
-                    <h3 class="text-xl font-semibold mb-4 text-slate-900">
-                        Website + Booking System
-                    </h3>
-                    <ul class="space-y-2 text-slate-600">
-                        <li>Booking otomatis</li>
-                        <li>Kalender ketersediaan</li>
-                        <li>Dashboard admin</li>
-                    </ul>
-                </div>
-
-                <div class="p-8 rounded-3xl bg-white shadow-xl hover:scale-105 transition duration-300 ring-1 ring-slate-100">
-                    <h3 class="text-xl font-semibold mb-4 text-slate-900">
-                        Custom Web Application
-                    </h3>
-                    <ul class="space-y-2 text-slate-600">
-                        <li>Sistem manajemen internal</li>
-                        <li>Dashboard laporan</li>
-                        <li>Role-based access</li>
-                    </ul>
-                </div>
-
-            </div>
+        <div class="p-8 bg-white rounded-3xl shadow-lg ring-1 ring-slate-200 hover:-translate-y-2 transition duration-300">
+          <h3 class="text-xl font-semibold mb-4">Website + Booking System</h3>
+          <ul class="text-slate-600 space-y-2">
+            <li>• Booking otomatis</li>
+            <li>• Kalender ketersediaan</li>
+            <li>• Dashboard admin</li>
+          </ul>
         </div>
-    </section>
 
-    <!-- ================= PRICING SECTION ================= -->
-    <section class="py-28 bg-slate-50">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-slate-900">
-                Paket Harga
-            </h2>
-
-            <div class="grid gap-10 md:grid-cols-3">
-
-                <div class="p-8 rounded-3xl bg-white shadow-lg ring-1 ring-slate-100">
-                    <h3 class="text-xl font-semibold mb-2">Basic</h3>
-                    <p class="text-2xl font-bold mb-6">Mulai dari Rp 1.500.000</p>
-                    <a href="https://wa.me/62xxxxxxxxxx"
-                       class="block text-center py-3 rounded-full bg-slate-900 text-white hover:bg-slate-800 transition">
-                        Hubungi Saya
-                    </a>
-                </div>
-
-                <div class="relative p-8 rounded-3xl shadow-xl bg-gradient-to-br from-blue-50 to-indigo-100 scale-105 ring-1 ring-indigo-200">
-                    <span class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 text-xs font-semibold rounded-full bg-slate-900 text-white">
-                        Paling Populer
-                    </span>
-                    <h3 class="text-xl font-semibold mb-2">Professional</h3>
-                    <p class="text-2xl font-bold mb-6">Mulai dari Rp 3.500.000</p>
-                    <a href="https://wa.me/62xxxxxxxxxx"
-                       class="block text-center py-3 rounded-full bg-slate-900 text-white hover:bg-slate-800 transition">
-                        Hubungi Saya
-                    </a>
-                </div>
-
-                <div class="p-8 rounded-3xl bg-white shadow-lg ring-1 ring-slate-100">
-                    <h3 class="text-xl font-semibold mb-2">Custom System</h3>
-                    <p class="text-2xl font-bold mb-6">Konsultasi</p>
-                    <a href="https://wa.me/62xxxxxxxxxx"
-                       class="block text-center py-3 rounded-full bg-slate-900 text-white hover:bg-slate-800 transition">
-                        Hubungi Saya
-                    </a>
-                </div>
-
-            </div>
+        <div class="p-8 bg-white rounded-3xl shadow-lg ring-1 ring-slate-200 hover:-translate-y-2 transition duration-300">
+          <h3 class="text-xl font-semibold mb-4">Custom Web Application</h3>
+          <ul class="text-slate-600 space-y-2">
+            <li>• Sistem manajemen internal</li>
+            <li>• Dashboard laporan</li>
+            <li>• Role-based access</li>
+          </ul>
         </div>
-    </section>
 
-    <!-- ================= CTA SECTION ================= -->
-    <section class="py-28 bg-gradient-to-br from-blue-50 via-white to-indigo-50 text-center">
-        <div class="max-w-3xl mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold mb-8 text-slate-900">
-                Siap Membangun Website atau Sistem Digital Anda?
-            </h2>
-            <a href="https://wa.me/62xxxxxxxxxx"
-               class="inline-block px-10 py-4 rounded-full bg-slate-900 text-white text-lg shadow-lg hover:bg-slate-800 transition">
-                Mulai Konsultasi
-            </a>
-        </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- ================= FOOTER ================= -->
-    <footer class="py-10 bg-white border-t border-slate-200">
-        <div class="max-w-6xl mx-auto px-6 text-center text-slate-500">
-            <p class="mb-4">© 2026 Wahyu Luthfi Ramadhan</p>
-            <div class="space-x-6">
-                <a href="https://wa.me/62xxxxxxxxxx" class="hover:text-slate-900 transition">WhatsApp</a>
-                <a href="https://linkedin.com" class="hover:text-slate-900 transition">LinkedIn</a>
-            </div>
+  <!-- ================= PRICING SECTION ================= -->
+  <section class="py-28 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-16">
+        Paket Harga
+      </h2>
+
+      <div class="grid md:grid-cols-3 gap-10">
+        
+        <div class="p-8 bg-white rounded-3xl shadow-lg ring-1 ring-slate-200">
+          <h3 class="text-xl font-semibold mb-4">Basic</h3>
+          <p class="text-slate-600">Mulai dari</p>
+          <p class="text-2xl font-bold mt-2">Rp 1.500.000</p>
+          <a href="#contact" class="mt-6 inline-block px-6 py-3 border border-slate-300 rounded-full hover:bg-slate-100 transition">
+            Hubungi Saya
+          </a>
         </div>
-    </footer>
+
+        <div class="p-10 bg-gradient-to-br from-indigo-50 to-blue-50 rounded-3xl shadow-xl ring-2 ring-indigo-500 scale-105 relative">
+          <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-indigo-600 text-white text-xs px-4 py-1 rounded-full">
+            Paling Populer
+          </span>
+          <h3 class="text-xl font-semibold mb-4">Professional</h3>
+          <p class="text-slate-600">Mulai dari</p>
+          <p class="text-2xl font-bold mt-2">Rp 3.500.000</p>
+          <a href="#contact" class="mt-6 inline-block px-6 py-3 bg-indigo-600 text-white rounded-full hover:scale-105 transition">
+            Hubungi Saya
+          </a>
+        </div>
+
+        <div class="p-8 bg-white rounded-3xl shadow-lg ring-1 ring-slate-200">
+          <h3 class="text-xl font-semibold mb-4">Custom System</h3>
+          <p class="text-slate-600">Harga</p>
+          <p class="text-2xl font-bold mt-2">Konsultasi</p>
+          <a href="#contact" class="mt-6 inline-block px-6 py-3 border border-slate-300 rounded-full hover:bg-slate-100 transition">
+            Hubungi Saya
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CTA SECTION ================= -->
+  <section id="contact" class="py-28 bg-gradient-to-r from-indigo-50 to-blue-50 text-center">
+    <div class="max-w-3xl mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-8">
+        Siap Membangun Website atau Sistem Digital Anda?
+      </h2>
+      <a href="#" class="px-10 py-4 bg-indigo-600 text-white rounded-full text-lg font-medium shadow-lg hover:scale-105 transition">
+        Mulai Konsultasi
+      </a>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="py-10 bg-white border-t border-slate-200 text-center text-slate-600">
+    <p>© 2026 Wahyu Luthfi Ramadhan</p>
+    <div class="mt-4 space-x-6">
+      <a href="#" class="hover:text-indigo-600">WhatsApp</a>
+      <a href="#" class="hover:text-indigo-600">LinkedIn</a>
+    </div>
+  </footer>
 
 </body>
 </html>
