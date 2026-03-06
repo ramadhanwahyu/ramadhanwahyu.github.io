@@ -56,12 +56,25 @@
         </div>
       </div>
 
-      <div>
-        <img 
-          src="https://images.unsplash.com/photo-1498050108023-c5249f4df085"
-          alt="Laptop with website"
-          class="rounded-3xl shadow-2xl ring-1 ring-slate-200 hover:scale-105 transition duration-500"
-        >
+      <!-- Image Slider -->
+      <div class="relative">
+        
+        <div class="relative w-full h-[420px] overflow-hidden rounded-3xl shadow-2xl ring-1 ring-slate-200">
+      
+          <img id="slide1"
+            src="laptopcoding.jpg"
+            class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-100">
+      
+          <img id="slide2"
+            src="laptopcoding2.jpg"
+            class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0">
+      
+          <img id="slide3"
+            src="laptopcoding3.jpg"
+            class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0">
+      
+        </div>
+      
       </div>
 
     </div>
@@ -190,5 +203,22 @@
     </div>
   </footer>
 
+<script>
+let slides = document.querySelectorAll('#slide1, #slide2, #slide3');
+let current = 0;
+
+setInterval(() => {
+
+  slides[current].classList.remove("opacity-100");
+  slides[current].classList.add("opacity-0");
+
+  current = (current + 1) % slides.length;
+
+  slides[current].classList.remove("opacity-0");
+  slides[current].classList.add("opacity-100");
+
+}, 4000);
+</script>
+  
 </body>
 </html>
