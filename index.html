@@ -1,438 +1,769 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Wahyu Luthfi Ramadhan – Web Developer | WL Karya Digital</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        fontFamily: {
-          sans: ['Plus Jakarta Sans', 'sans-serif'],
-          serif: ['DM Serif Display', 'serif'],
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wahyu Luthfi Ramadhan – Web Developer | WL Karya Digital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['DM Serif Display', 'serif'],
+                    }
+                }
+            }
         }
-      }
-    }
-  }
-</script>
-<style>
-  :root { scroll-behavior: smooth; }
-  body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f0fdf4; color: #1e293b; }
-  .blob { border-radius: 72% 28% 60% 40% / 40% 55% 45% 60%; }
-  .blob2 { border-radius: 40% 60% 30% 70% / 60% 40% 60% 40%; }
-  .fade-slide { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
-  .fade-slide.visible { opacity: 1; transform: translateY(0); }
+    </script>
+    <style>
+        :root {
+            scroll-behavior: smooth;
+            --emerald-50: #ecfdf5;
+            --emerald-100: #d1fae5;
+            --emerald-200: #a7f3d0;
+            --emerald-300: #6ee7b7;
+            --emerald-400: #34d399;
+            --emerald-500: #10b981;
+            --emerald-600: #059669;
+            --emerald-700: #047857;
+            --emerald-800: #065f46;
+            --emerald-900: #064e3b;
+            --slate-50: #f8fafc;
+            --slate-100: #f1f5f9;
+            --slate-200: #e2e8f0;
+            --slate-300: #cbd5e1;
+            --slate-400: #94a3b8;
+            --slate-500: #64748b;
+            --slate-600: #475569;
+            --slate-700: #334155;
+            --slate-800: #1e293b;
+            --slate-900: #0f172a;
+        }
 
-  /* Slider */
-  .slider-track { display: flex; transition: transform 0.7s cubic-bezier(0.4,0,0.2,1); }
-  .slider-item { min-width: 100%; }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #f9fafb;
+            color: #1e293b;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            letter-spacing: -0.01em;
+        }
 
-  /* Horizontal scroll portfolio */
-  .portfolio-scroll::-webkit-scrollbar { height: 4px; }
-  .portfolio-scroll::-webkit-scrollbar-thumb { background: #a7f3d0; border-radius: 99px; }
+        /* Blob shapes */
+        .blob {
+            border-radius: 72% 28% 60% 40% / 40% 55% 45% 60%;
+        }
+        .blob2 {
+            border-radius: 40% 60% 30% 70% / 60% 40% 60% 40%;
+        }
+        .blob3 {
+            border-radius: 55% 45% 65% 35% / 35% 60% 40% 65%;
+        }
 
-  /* Pricing card hover */
-  .pricing-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-  .pricing-card:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(16,185,129,0.15); }
+        /* Fade-slide animation */
+        .fade-slide {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.75s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.75s cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+        .fade-slide.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-  /* Portfolio card hover */
-  .portfolio-card { transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); }
-  .portfolio-card:hover { transform: scale(1.03) translateY(-4px); }
+        /* Slider */
+        .slider-track {
+            display: flex;
+            transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform;
+        }
+        .slider-item {
+            min-width: 100%;
+        }
 
-  /* Nav link underline */
-  .nav-link { position: relative; }
-  .nav-link::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:1.5px; background: linear-gradient(90deg,#10b981,#14b8a6); transition:width 0.3s ease; }
-  .nav-link:hover::after { width:100%; }
+        /* Slider dot styles */
+        .slider-dot {
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: none;
+            outline: none;
+        }
+        .slider-dot.active {
+            width: 28px;
+            background: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+        }
+        .slider-dot:not(.active) {
+            width: 8px;
+            background: rgba(255, 255, 255, 0.55);
+        }
+        .slider-dot:not(.active):hover {
+            background: rgba(255, 255, 255, 0.8);
+            width: 12px;
+        }
 
-  /* Gradient text */
-  .grad-text { background: linear-gradient(135deg, #10b981, #34d399, #14b8a6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-</style>
+        /* Horizontal scroll portfolio */
+        .portfolio-scroll {
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: #a7f3d0 transparent;
+        }
+        .portfolio-scroll::-webkit-scrollbar {
+            height: 5px;
+        }
+        .portfolio-scroll::-webkit-scrollbar-track {
+            background: transparent;
+            border-radius: 99px;
+        }
+        .portfolio-scroll::-webkit-scrollbar-thumb {
+            background: #a7f3d0;
+            border-radius: 99px;
+        }
+        .portfolio-scroll::-webkit-scrollbar-thumb:hover {
+            background: #6ee7b7;
+        }
+
+        /* Pricing card */
+        .pricing-card {
+            transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.4s cubic-bezier(0.22, 0.61, 0.36, 1), border-color 0.3s ease;
+            will-change: transform;
+        }
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 28px 64px rgba(16, 185, 129, 0.12), 0 8px 20px rgba(16, 185, 129, 0.06);
+            border-color: #a7f3d0;
+        }
+
+        /* Portfolio card */
+        .portfolio-card {
+            transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+            will-change: transform;
+        }
+        .portfolio-card:hover {
+            transform: scale(1.03) translateY(-6px);
+            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.1), 0 4px 16px rgba(16, 185, 129, 0.08);
+        }
+        .portfolio-card .card-img {
+            transition: transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+        .portfolio-card:hover .card-img {
+            transform: scale(1.08);
+        }
+
+        /* Nav link underline */
+        .nav-link {
+            position: relative;
+            padding-bottom: 3px;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #10b981, #34d399);
+            border-radius: 99px;
+            transition: width 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Gradient text */
+        .grad-text {
+            background: linear-gradient(135deg, #10b981, #34d399, #14b8a6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Mobile menu */
+        .mobile-menu-enter {
+            animation: slideDown 0.3s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+        }
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hamburger animation */
+        #menuBtn span {
+            transition: all 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+            transform-origin: center;
+        }
+        #menuBtn.open span:nth-child(1) {
+            transform: translateY(6.5px) rotate(45deg);
+        }
+        #menuBtn.open span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+        #menuBtn.open span:nth-child(3) {
+            transform: translateY(-6.5px) rotate(-45deg);
+        }
+
+        /* Check icon styling */
+        .check-icon {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        /* Button hover lift */
+        .btn-lift {
+            transition: transform 0.25s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.25s cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+        .btn-lift:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Subtle ring on focus */
+        .focus-ring:focus-visible {
+            outline: 2px solid #10b981;
+            outline-offset: 3px;
+            border-radius: 99px;
+        }
+    </style>
 </head>
 <body class="antialiased">
 
-<!-- NAV -->
-<nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-slate-100/80">
-  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-    <span class="font-serif text-xl text-slate-800">WL <span class="text-emerald-500">Karya Digital</span></span>
-    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-500">
-      <a href="#about" class="nav-link hover:text-slate-800 transition-colors">Tentang</a>
-      <a href="#portfolio" class="nav-link hover:text-slate-800 transition-colors">Portofolio</a>
-      <a href="#pricing" class="nav-link hover:text-slate-800 transition-colors">Paket</a>
-      <a href="https://wa.me/6289512482772" target="_blank" class="px-5 py-2.5 rounded-full bg-emerald-50 text-emerald-600 hover:bg-emerald-100 transition-colors text-sm font-semibold">Konsultasi →</a>
+    <!-- NAV -->
+    <nav class="fixed top-0 w-full z-50 bg-white/85 backdrop-blur-xl border-b border-slate-100/70 shadow-sm shadow-slate-100/20">
+        <div class="max-w-6xl mx-auto px-5 md:px-6 py-3.5 md:py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <a href="#" class="font-serif text-xl md:text-2xl text-slate-800 tracking-tight select-none">
+                    WL<span class="text-emerald-500"> Karya Digital</span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-1 text-sm font-medium text-slate-500">
+                    <a href="#about" class="nav-link px-3 py-2 hover:text-slate-800 transition-colors rounded-lg">Tentang</a>
+                    <a href="#portfolio" class="nav-link px-3 py-2 hover:text-slate-800 transition-colors rounded-lg">Portofolio</a>
+                    <a href="#pricing" class="nav-link px-3 py-2 hover:text-slate-800 transition-colors rounded-lg">Paket</a>
+                    <div class="w-px h-5 bg-slate-200 mx-2"></div>
+                    <a href="https://wa.me/6289512482772" target="_blank"
+                    class="ml-1 px-5 py-2.5 rounded-full bg-emerald-600 text-white hover:bg-emerald-700 transition-all text-sm font-semibold shadow-md shadow-emerald-200/60 btn-lift focus-ring">
+                    Konsultasi →
+                </a>
+            </div>
+
+            <!-- Mobile Button -->
+            <button
+            id="menuBtn"
+            class="md:hidden flex flex-col gap-1.5 p-2 -mr-2"
+            aria-label="Toggle Menu"
+            >
+            <span class="w-5 h-0.5 bg-slate-600 rounded-full"></span>
+            <span class="w-5 h-0.5 bg-slate-600 rounded-full"></span>
+            <span class="w-5 h-0.5 bg-slate-600 rounded-full"></span>
+        </button>
     </div>
-  </div>
+
+    <!-- Mobile Menu -->
+    <div
+    id="mobileMenu"
+    class="hidden md:hidden mt-3 pb-3 flex flex-col gap-1 text-sm font-medium text-slate-600"
+    >
+    <a href="#about" class="px-4 py-3 rounded-xl hover:bg-emerald-50 hover:text-emerald-600 transition-colors">Tentang</a>
+    <a href="#portfolio" class="px-4 py-3 rounded-xl hover:bg-emerald-50 hover:text-emerald-600 transition-colors">Portofolio</a>
+    <a href="#pricing" class="px-4 py-3 rounded-xl hover:bg-emerald-50 hover:text-emerald-600 transition-colors">Paket</a>
+    <a href="https://wa.me/6289512482772" target="_blank"
+    class="mt-2 px-5 py-3.5 rounded-full bg-emerald-600 text-white text-center font-semibold shadow-md shadow-emerald-200/60 btn-lift">
+    Konsultasi →
+</a>
+</div>
+</div>
 </nav>
 
 <!-- HERO -->
-<!-- <section class="relative min-h-screen flex items-center overflow-hidden pt-20"> -->
-<section class="relative min-h-screen flex items-center overflow-hidden pt-20 bg-gradient-to-r from-emerald-50 via-emerald-50/50 to-white">
-  <!-- Blobs -->
-  <div class="absolute -top-32 -left-32 w-96 h-96 blob bg-emerald-100/60 blur-3xl opacity-70"></div>
-  <div class="absolute top-1/2 -right-24 w-80 h-80 blob2 bg-teal-100/50 blur-3xl opacity-60"></div>
-  <div class="absolute bottom-0 left-1/3 w-64 h-64 blob bg-green-100/40 blur-2xl opacity-50"></div>
+<section class="relative min-h-screen flex items-center overflow-hidden pt-16 md:pt-20 bg-gradient-to-br from-emerald-50/90 via-white to-teal-50/70">
+    <!-- Decorative blobs -->
+    <div class="absolute -top-40 -left-40 w-[500px] h-[500px] blob bg-emerald-100/40 blur-3xl opacity-60 pointer-events-none"></div>
+    <div class="absolute top-1/3 -right-28 w-96 h-96 blob2 bg-teal-100/35 blur-3xl opacity-50 pointer-events-none"></div>
+    <div class="absolute bottom-10 left-1/4 w-72 h-72 blob3 bg-green-100/30 blur-2xl opacity-40 pointer-events-none"></div>
+    <!-- Subtle dot pattern -->
+    <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(circle, #065f46 1px, transparent 1px); background-size: 28px 28px;"></div>
 
-  <div class="relative max-w-6xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-16 items-center w-full">
-    <!-- Left -->
-    <div class="fade-slide">
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-500 text-xs font-semibold mb-8 tracking-wide uppercase">
-        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-        Available for projects • WL Karya Digital
-      </div>
-      <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl text-slate-800 leading-[1.1] mb-6">
-        Web Developer<br/><span class="italic grad-text">untuk Bisnis</span><br/>& Institusi.
-      </h1>
-      <p class="text-slate-500 text-lg leading-relaxed mb-4 font-light">Website & Web Application Custom</p>
-      <p class="text-slate-400 text-base leading-relaxed mb-10 max-w-md">
-        Membantu bisnis dan institusi membangun website profesional dan sistem digital yang efisien.
-      </p>
-      <div class="flex flex-wrap gap-3">
-        <a href="https://wa.me/6289512482772" target="_blank"
-           class="px-7 py-3.5 rounded-full bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition-all hover:shadow-lg hover:shadow-emerald-200 text-sm">
-          Konsultasi Gratis
+    <div class="relative max-w-6xl mx-auto px-5 md:px-6 py-16 md:py-24 grid md:grid-cols-2 gap-12 md:gap-16 items-center w-full">
+        <!-- Left -->
+        <div class="fade-slide">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 border border-emerald-100 text-emerald-600 text-xs font-semibold mb-7 tracking-wide shadow-sm">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                Available for projects • WL Karya Digital
+            </div>
+            <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl text-slate-800 leading-[1.08] mb-6 tracking-tight">
+                Web Developer<br /><span class="italic grad-text">untuk Bisnis</span><br />& Institusi<span class="text-emerald-400">.</span>
+            </h1>
+            <p class="text-slate-600 text-lg leading-relaxed mb-2 font-medium">Website & Web Application Custom</p>
+            <p class="text-slate-400 text-base leading-relaxed mb-9 max-w-md">
+                Membantu bisnis dan institusi membangun website profesional dan sistem digital yang efisien.
+            </p>
+            <div class="flex flex-wrap gap-3">
+                <a href="https://wa.me/6289512482772" target="_blank"
+                class="px-7 py-3.5 rounded-full bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition-all hover:shadow-xl hover:shadow-emerald-200/60 text-sm btn-lift focus-ring">
+                Konsultasi Gratis
+            </a>
+            <a href="#pricing"
+            class="px-7 py-3.5 rounded-full border border-slate-200 text-slate-600 font-semibold hover:border-emerald-300 hover:text-emerald-600 hover:bg-emerald-50/60 transition-all text-sm bg-white/70 backdrop-blur-sm btn-lift focus-ring">
+            Lihat Paket ↓
         </a>
-        <a href="#pricing"
-           class="px-7 py-3.5 rounded-full border border-slate-200 text-slate-600 font-semibold hover:border-emerald-300 hover:text-emerald-600 transition-all text-sm bg-white/60">
-          Lihat Paket ↓
-        </a>
-      </div>
     </div>
+</div>
 
-    <!-- Right: Slider -->
-    <div class="fade-slide relative" style="transition-delay:0.15s">
-      <div class="relative rounded-3xl overflow-hidden shadow-2xl shadow-emerald-200/60 aspect-square">
+<!-- Right: Slider -->
+<div class="fade-slide relative" style="transition-delay:0.15s">
+    <div class="relative rounded-3xl overflow-hidden shadow-2xl shadow-emerald-200/50 aspect-square ring-1 ring-slate-100">
         <div class="slider-track h-full" id="sliderTrack">
-          <div class="slider-item h-full">
-            <img src="laptopcoding.jpg" class="w-full h-full object-cover" alt="Coding workspace" />
-          </div>
-          <div class="slider-item h-full">
-            <img src="laptopcoding2.jpg" class="w-full h-full object-cover" alt="Web development" />
-          </div>
-          <div class="slider-item h-full">
-            <img src="laptopcoding3.jpg" class="w-full h-full object-cover" alt="Laptop code" />
-          </div>
+            <div class="slider-item h-full">
+                <img src="laptopcoding.jpg" class="w-full h-full object-cover" alt="Coding workspace" loading="eager" />
+            </div>
+            <div class="slider-item h-full">
+                <img src="laptopcoding2.jpg" class="w-full h-full object-cover" alt="Web development" loading="lazy" />
+            </div>
+            <div class="slider-item h-full">
+                <img src="laptopcoding3.jpg" class="w-full h-full object-cover" alt="Laptop code" loading="lazy" />
+            </div>
         </div>
         <!-- Dots -->
-        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2" id="sliderDots">
-          <button class="w-6 h-1.5 rounded-full bg-white transition-all" onclick="goSlide(0)"></button>
-          <button class="w-2 h-1.5 rounded-full bg-white/50 transition-all" onclick="goSlide(1)"></button>
-          <button class="w-2 h-1.5 rounded-full bg-white/50 transition-all" onclick="goSlide(2)"></button>
+        <div class="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2.5 z-10" id="sliderDots">
+            <button class="slider-dot h-2 rounded-full active" onclick="goSlide(0)" aria-label="Slide 1"></button>
+            <button class="slider-dot h-2 rounded-full" onclick="goSlide(1)" aria-label="Slide 2"></button>
+            <button class="slider-dot h-2 rounded-full" onclick="goSlide(2)" aria-label="Slide 3"></button>
         </div>
-        <!-- Overlay gradient -->
-        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent pointer-events-none"></div>
-      </div>
+        <!-- Subtle overlay -->
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/15 via-transparent to-transparent pointer-events-none"></div>
     </div>
-  </div>
+</div>
+</div>
 </section>
 
 <!-- CAMPAIGN -->
-<section class="py-24 relative overflow-hidden">
-  <div class="absolute inset-0 bg-gradient-to-br from-emerald-50/80 via-white to-teal-50/60"></div>
-  <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-200 to-transparent"></div>
-  <div class="relative max-w-4xl mx-auto px-6 text-center fade-slide">
-    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-600 text-xs font-semibold mb-6 tracking-wide uppercase">
-      <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-      Program WL Karya Digital 2026
-    </div>
-    <h2 class="font-serif text-3xl md:text-4xl text-slate-800 mb-4">
-      30 Website Gratis untuk<br/><span class="italic text-emerald-500">Sekolah Islam 2026</span>
-    </h2>
-    <p class="text-slate-500 text-base leading-relaxed max-w-2xl mx-auto mb-10">
-      Program dari <span class="font-semibold text-slate-700">WL Karya Digital</span> berupa bantuan pembuatan website gratis untuk sekolah Islam agar memiliki profil online yang profesional dan mudah diakses.
-    </p>
-    <div class="grid sm:grid-cols-3 gap-4 mb-10 text-left">
-      <div class="bg-white rounded-2xl p-5 border border-slate-100 shadow-sm">
-        <div class="w-9 h-9 rounded-xl bg-emerald-50 flex items-center justify-center mb-3">
-          <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+<section class="py-24 md:py-28 relative overflow-hidden bg-white">
+    <div class="absolute inset-0 bg-gradient-to-br from-emerald-50/70 via-white to-teal-50/50 pointer-events-none"></div>
+    <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-200/80 to-transparent"></div>
+    <div class="relative max-w-4xl mx-auto px-5 md:px-6 text-center fade-slide">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-600 text-xs font-semibold mb-6 tracking-wide uppercase shadow-sm">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            Program WL Karya Digital 2026
         </div>
-        <p class="font-semibold text-slate-700 text-sm mb-1">Gratis Pembuatan</p>
-        <p class="text-slate-400 text-xs leading-relaxed">Tanpa biaya pembuatan website sama sekali</p>
-      </div>
-      <div class="bg-white rounded-2xl p-5 border border-slate-100 shadow-sm">
-        <div class="w-9 h-9 rounded-xl bg-emerald-50 flex items-center justify-center mb-3">
-          <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-        </div>
-        <p class="font-semibold text-slate-700 text-sm mb-1">Terbatas 30 Sekolah</p>
-        <p class="text-slate-400 text-xs leading-relaxed">Kuota terbatas, segera daftarkan sekolah Anda</p>
-      </div>
-      <div class="bg-white rounded-2xl p-5 border border-slate-100 shadow-sm">
-        <div class="w-9 h-9 rounded-xl bg-emerald-50 flex items-center justify-center mb-3">
-          <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-        </div>
-        <p class="font-semibold text-slate-700 text-sm mb-1">Berlaku 2026</p>
-        <p class="text-slate-400 text-xs leading-relaxed">Program khusus tahun 2026 selagi kuota masih ada</p>
-      </div>
-    </div>
-    <div class="mb-8">
-        <div class="inline-flex items-center gap-6 px-6 py-3 rounded-2xl bg-white border border-slate-100 shadow-sm text-sm text-slate-600">
-            
-            <div class="text-center">
-            <p class="font-semibold text-slate-800">0 Sekolah</p>
-            <p class="text-xs text-slate-400">Sudah Bergabung</p>
+        <h2 class="font-serif text-3xl md:text-4xl text-slate-800 mb-5 tracking-tight leading-tight">
+            30 Website Gratis untuk<br /><span class="italic text-emerald-500">Sekolah Islam 2026</span>
+        </h2>
+        <p class="text-slate-500 text-base leading-relaxed max-w-2xl mx-auto mb-11">
+            Program dari <span class="font-semibold text-slate-700">WL Karya Digital</span> berupa bantuan pembuatan website gratis untuk sekolah Islam agar memiliki profil online yang profesional dan mudah diakses.
+        </p>
+
+        <!-- Benefit Cards -->
+        <div class="grid sm:grid-cols-3 gap-4 md:gap-5 mb-10 text-left">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-100 shadow-md shadow-slate-100/60 hover:shadow-lg hover:shadow-emerald-100/40 transition-all duration-300">
+                <div class="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center mb-4">
+                    <svg class="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <p class="font-semibold text-slate-700 text-sm mb-1.5">Gratis Pembuatan</p>
+                <p class="text-slate-400 text-xs leading-relaxed">Tanpa biaya pembuatan website sama sekali</p>
             </div>
-
-            <div class="w-px h-8 bg-slate-200"></div>
-
-            <div class="text-center">
-            <p class="font-semibold text-emerald-600">30 Kuota</p>
-            <p class="text-xs text-slate-400">Tersisa</p>
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-100 shadow-md shadow-slate-100/60 hover:shadow-lg hover:shadow-emerald-100/40 transition-all duration-300">
+                <div class="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center mb-4">
+                    <svg class="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                </div>
+                <p class="font-semibold text-slate-700 text-sm mb-1.5">Terbatas 30 Sekolah</p>
+                <p class="text-slate-400 text-xs leading-relaxed">Kuota terbatas, segera daftarkan sekolah Anda</p>
             </div>
-
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-100 shadow-md shadow-slate-100/60 hover:shadow-lg hover:shadow-emerald-100/40 transition-all duration-300">
+                <div class="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center mb-4">
+                    <svg class="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                </div>
+                <p class="font-semibold text-slate-700 text-sm mb-1.5">Berlaku 2026</p>
+                <p class="text-slate-400 text-xs leading-relaxed">Program khusus tahun 2026 selagi kuota masih ada</p>
+            </div>
         </div>
-    </div>
-    <div class="flex flex-wrap justify-center gap-3">
-      <a href="https://drive.google.com/file/d/1XtSIkFr_ra6qJhP43hjsQMko8-wlh_gY/view?usp=sharing" target="_blank" class="px-6 py-3 rounded-full border border-slate-200 text-slate-600 font-semibold hover:border-emerald-300 hover:text-emerald-600 transition-all text-sm bg-white">
-        Syarat & Ketentuan →
-      </a>
-      <a href="https://wa.me/6289512482772" target="_blank"
-         class="px-6 py-3 rounded-full bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition-all text-sm shadow-md shadow-emerald-100">
+
+        <!-- Stat Counter -->
+        <div class="mb-9 flex justify-center">
+            <div class="inline-flex items-center gap-8 px-7 py-4 rounded-2xl bg-white border border-slate-100 shadow-md shadow-slate-100/50 text-sm text-slate-600">
+                <div class="text-center">
+                    <p class="font-bold text-xl text-slate-800">0</p>
+                    <p class="text-xs text-slate-400 mt-0.5">Sekolah Sudah Bergabung</p>
+                </div>
+                <div class="w-px h-10 bg-slate-200"></div>
+                <div class="text-center">
+                    <p class="font-bold text-xl text-emerald-600">30</p>
+                    <p class="text-xs text-slate-400 mt-0.5">Kuota Tersisa</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-wrap justify-center gap-3">
+            <a href="https://drive.google.com/file/d/1XtSIkFr_ra6qJhP43hjsQMko8-wlh_gY/view?usp=sharing" target="_blank"
+            class="px-6 py-3.5 rounded-full border border-slate-200 text-slate-600 font-semibold hover:border-emerald-300 hover:text-emerald-600 hover:bg-emerald-50/50 transition-all text-sm bg-white shadow-sm btn-lift focus-ring">
+            Syarat & Ketentuan →
+        </a>
+        <a href="https://wa.me/6289512482772" target="_blank"
+        class="px-6 py-3.5 rounded-full bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition-all text-sm shadow-md shadow-emerald-200/60 btn-lift focus-ring">
         Ajukan Sekolah
-      </a>
-    </div>
-  </div>
+    </a>
+</div>
+</div>
 </section>
 
 <!-- ABOUT -->
-<section id="about" class="py-24 bg-white">
-  <div class="max-w-2xl mx-auto px-6 text-center fade-slide">
-    <div class="flex justify-center mb-6">
-      <div class="h-px w-16 bg-gradient-to-r from-transparent to-emerald-300 self-center"></div>
-      <span class="mx-3 text-xs text-emerald-400 font-semibold tracking-widest uppercase">Tentang Saya</span>
-      <div class="h-px w-16 bg-gradient-to-l from-transparent to-emerald-300 self-center"></div>
+<section id="about" class="py-24 md:py-28 bg-white relative">
+    <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200/60 to-transparent"></div>
+    <div class="max-w-2xl mx-auto px-5 md:px-6 text-center fade-slide">
+        <div class="flex justify-center items-center mb-6 gap-4">
+            <div class="h-px w-12 bg-gradient-to-r from-transparent to-emerald-300"></div>
+            <span class="text-xs text-emerald-500 font-semibold tracking-widest uppercase">Tentang Saya</span>
+            <div class="h-px w-12 bg-gradient-to-l from-transparent to-emerald-300"></div>
+        </div>
+        <h2 class="font-serif text-3xl md:text-4xl text-slate-800 mb-2 tracking-tight">
+            Wahyu Luthfi <span class="italic text-emerald-500">Ramadhan</span>
+        </h2>
+        <p class="text-sm text-slate-400 font-medium mb-7">
+            Founder of <span class="text-emerald-500 font-semibold">WL Karya Digital</span>
+        </p>
+        <div class="space-y-5 text-slate-500 text-base leading-relaxed text-left bg-slate-50/80 rounded-3xl p-7 md:p-9 border border-slate-100/80 shadow-inner shadow-slate-100/40">
+            <p>
+                Saya adalah seorang <span class="font-semibold text-slate-700">Web Developer</span> dengan latar belakang pendidikan formal di bidang Informatika. Saya merupakan alumni <span class="font-semibold text-slate-700">Universitas Islam Indonesia (UII)</span>, salah satu perguruan tinggi Islam terkemuka di Indonesia.
+            </p>
+            <p>
+                Saat ini saya membuka layanan pembuatan website dan sistem berbasis web melalui <span class="font-semibold text-slate-700">WL Karya Digital</span>, yang berfokus pada pengembangan website company profile dan sistem sederhana untuk membantu pengelolaan data dan aktivitas operasional secara lebih rapi dan efisien.
+            </p>
+            <p>
+                Saya ingin terus belajar dan mengembangkan kemampuan, dengan harapan dapat memberikan solusi digital yang bermanfaat dan sesuai dengan kebutuhan pengguna.
+            </p>
+        </div>
     </div>
-    <h2 class="font-serif text-3xl md:text-4xl text-slate-800 mb-1">
-      Wahyu Luthfi <span class="italic text-emerald-500">Ramadhan</span>
-    </h2>
-    <p class="text-sm text-slate-400 font-medium mb-6">
-      Founder of <span class="text-emerald-500 font-semibold">WL Karya Digital</span>
-    </p>
-    <div class="space-y-5 text-slate-500 text-base leading-relaxed text-left bg-slate-50/70 rounded-3xl p-8 border border-slate-100">
-      <p>
-        Saya adalah seorang <span class="font-semibold text-slate-700">Web Developer</span> dengan latar belakang pendidikan formal di bidang Informatika. Saya merupakan alumni <span class="font-semibold text-slate-700">Universitas Islam Indonesia (UII)</span>, salah satu perguruan tinggi Islam terkemuka di Indonesia.
-      </p>
-      <p>
-        Saat ini saya membuka layanan pembuatan website dan sistem berbasis web melalui <span class="font-semibold text-slate-700">WL Karya Digital</span>, yang berfokus pada pengembangan website company profile dan sistem sederhana untuk membantu pengelolaan data dan aktivitas operasional secara lebih rapi dan efisien.
-      </p>
-      <p>
-        Saya ingin terus belajar dan mengembangkan kemampuan, dengan harapan dapat memberikan solusi digital yang bermanfaat dan sesuai dengan kebutuhan pengguna.
-      </p>
-    </div>
-  </div>
 </section>
 
 <!-- PORTFOLIO -->
-<section id="portfolio" class="py-24 bg-gradient-to-b from-slate-50/80 to-white">
-  <div class="max-w-6xl mx-auto px-6">
-    <div class="fade-slide mb-12">
-      <div class="flex justify-between items-end">
-        <div>
-          <p class="text-xs text-emerald-400 font-semibold tracking-widest uppercase mb-3">Portofolio</p>
-          <h2 class="font-serif text-3xl md:text-4xl text-slate-800">Karya Terpilih <span class="italic text-emerald-500">WL Karya Digital</span></h2>
-        </div>
-        <p class="text-slate-400 text-sm hidden md:block max-w-xs text-right leading-relaxed">Beberapa website dan sistem yang pernah saya kembangkan.</p>
-      </div>
-    </div>
-
-    <div class="portfolio-scroll overflow-x-auto pb-4 fade-slide" style="transition-delay:0.1s">
-      <div class="flex gap-6" style="width:max-content">
-
-        <!-- Card 1 -->
-        <div class="portfolio-card w-72 flex-shrink-0 bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100/80 cursor-pointer">
-          <div class="h-48 overflow-hidden">
-            <img src="portofolio1.png" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" alt="Website Hotel" />
-          </div>
-          <div class="p-6">
-            <span class="text-xs text-emerald-400 font-semibold tracking-wide uppercase">Landing Page</span>
-            <h3 class="font-semibold text-slate-800 mt-1 mb-3">Tampilan Website Toko Baju Muslim</h3>
-            <p class="text-slate-400 text-sm leading-relaxed mb-4">Tampilan Website landing page sederhana, rapi dan profesional.</p>
-            <a href="https://ramadhanwahyu.github.io/tokobajumuslim/" target="_blank" class="text-emerald-500 text-sm font-semibold hover:text-emerald-700 transition-colors inline-flex items-center gap-1">Lihat Website <span class="text-xs">↗</span></a>
-          </div>
+<section id="portfolio" class="py-24 md:py-28 bg-gradient-to-b from-slate-50/90 to-white">
+    <div class="max-w-6xl mx-auto px-5 md:px-6">
+        <div class="fade-slide mb-12">
+            <div class="flex flex-col md:flex-row md:justify-between md:items-end gap-3">
+                <div>
+                    <p class="text-xs text-emerald-500 font-semibold tracking-widest uppercase mb-3">Portofolio</p>
+                    <h2 class="font-serif text-3xl md:text-4xl text-slate-800 tracking-tight">
+                        Karya Terpilih <span class="italic text-emerald-500">WL Karya Digital</span>
+                    </h2>
+                </div>
+                <p class="text-slate-400 text-sm max-w-xs md:text-right leading-relaxed">
+                    Beberapa website dan sistem yang pernah saya kembangkan.
+                </p>
+            </div>
         </div>
 
-        <!-- Card 2 -->
-        <div class="portfolio-card w-72 flex-shrink-0 bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100/80 cursor-pointer">
-          <div class="h-48 overflow-hidden">
-            <img src="portofolio2.png" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" alt="Sekolah" />
-          </div>
-          <div class="p-6">
-            <span class="text-xs text-emerald-400 font-semibold tracking-wide uppercase">Landing Page</span>
-            <h3 class="font-semibold text-slate-800 mt-1 mb-3">Tampilan Website Toko Pakaian Muslimah</h3>
-            <p class="text-slate-400 text-sm leading-relaxed mb-4">Tampilan website landing page untuk pakaian muslimah dengan desain premium dan feminim.</p>
-            <a href="https://ramadhanwahyu.github.io/busanamuslimah/" target="_blank" class="text-emerald-500 text-sm font-semibold hover:text-emerald-700 transition-colors inline-flex items-center gap-1">Lihat Website <span class="text-xs">↗</span></a>
-          </div>
+        <div class="portfolio-scroll overflow-x-auto pb-5 fade-slide" style="transition-delay:0.1s">
+            <div class="flex gap-5 md:gap-6" style="width:max-content">
+                <!-- Card 1 -->
+                <div class="portfolio-card w-72 md:w-80 flex-shrink-0 bg-white rounded-2xl overflow-hidden shadow-lg shadow-slate-200/60 border border-slate-100/70 cursor-pointer group">
+                    <div class="h-48 md:h-52 overflow-hidden">
+                        <img src="portofolio1.png" class="card-img w-full h-full object-cover" alt="Website Toko Baju Muslim" loading="lazy" />
+                    </div>
+                    <div class="p-5 md:p-6">
+                        <span class="text-xs text-emerald-500 font-semibold tracking-wide uppercase">Landing Page</span>
+                        <h3 class="font-semibold text-slate-800 mt-1.5 mb-2.5 text-base">Tampilan Website Toko Baju Muslim</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-4">Tampilan Website landing page sederhana, rapi dan profesional.</p>
+                        <a href="https://ramadhanwahyu.github.io/tokobajumuslim/" target="_blank"
+                        class="text-emerald-500 text-sm font-semibold hover:text-emerald-700 transition-colors inline-flex items-center gap-1.5 group/link">
+                        Lihat Website
+                        <span class="text-xs transition-transform group-hover/link:translate-x-0.5">↗</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="portfolio-card w-72 md:w-80 flex-shrink-0 bg-white rounded-2xl overflow-hidden shadow-lg shadow-slate-200/60 border border-slate-100/70 cursor-pointer group">
+                <div class="h-48 md:h-52 overflow-hidden">
+                    <img src="portofolio2.png" class="card-img w-full h-full object-cover" alt="Website Toko Pakaian Muslimah" loading="lazy" />
+                </div>
+                <div class="p-5 md:p-6">
+                    <span class="text-xs text-emerald-500 font-semibold tracking-wide uppercase">Landing Page</span>
+                    <h3 class="font-semibold text-slate-800 mt-1.5 mb-2.5 text-base">Tampilan Website Toko Pakaian Muslimah</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">Tampilan website landing page untuk pakaian muslimah dengan desain premium dan feminim.</p>
+                    <a href="https://ramadhanwahyu.github.io/busanamuslimah/" target="_blank"
+                    class="text-emerald-500 text-sm font-semibold hover:text-emerald-700 transition-colors inline-flex items-center gap-1.5 group/link">
+                    Lihat Website
+                    <span class="text-xs transition-transform group-hover/link:translate-x-0.5">↗</span>
+                </a>
+            </div>
         </div>
 
         <!-- Card 3 -->
-        <div class="portfolio-card w-72 flex-shrink-0 bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100/80 cursor-pointer">
-          <div class="h-48 overflow-hidden">
-            <img src="portofolio3.png" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" alt="Company Profile" />
-          </div>
-          <div class="p-6">
-            <span class="text-xs text-emerald-400 font-semibold tracking-wide uppercase">Landing Page</span>
-            <h3 class="font-semibold text-slate-800 mt-1 mb-3">Tampilan Website Homestay</h3>
-            <p class="text-slate-400 text-sm leading-relaxed mb-4">Contoh tampilan website sebuah homestay</p>
-            <a href="https://ramadhanwahyu.github.io/ramadhanhomestay/" target="_blank" class="text-emerald-500 text-sm font-semibold hover:text-emerald-700 transition-colors inline-flex items-center gap-1">Lihat Website <span class="text-xs">↗</span></a>
-          </div>
+        <div class="portfolio-card w-72 md:w-80 flex-shrink-0 bg-white rounded-2xl overflow-hidden shadow-lg shadow-slate-200/60 border border-slate-100/70 cursor-pointer group">
+            <div class="h-48 md:h-52 overflow-hidden">
+                <img src="portofolio3.png" class="card-img w-full h-full object-cover" alt="Website Homestay" loading="lazy" />
+            </div>
+            <div class="p-5 md:p-6">
+                <span class="text-xs text-emerald-500 font-semibold tracking-wide uppercase">Landing Page</span>
+                <h3 class="font-semibold text-slate-800 mt-1.5 mb-2.5 text-base">Tampilan Website Homestay</h3>
+                <p class="text-slate-400 text-sm leading-relaxed mb-4">Contoh tampilan website sebuah homestay</p>
+                <a href="https://ramadhanwahyu.github.io/ramadhanhomestay/" target="_blank"
+                class="text-emerald-500 text-sm font-semibold hover:text-emerald-700 transition-colors inline-flex items-center gap-1.5 group/link">
+                Lihat Website
+                <span class="text-xs transition-transform group-hover/link:translate-x-0.5">↗</span>
+            </a>
         </div>
-
-        <!-- Card 4 -->
-        <!-- <div class="portfolio-card w-72 flex-shrink-0 bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100/80 cursor-pointer">
-          <div class="h-48 overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" alt="E-commerce" />
-          </div>
-          <div class="p-6">
-            <span class="text-xs text-emerald-400 font-semibold tracking-wide uppercase">E-Commerce</span>
-            <h3 class="font-semibold text-slate-800 mt-1 mb-3">Toko Online UMKM</h3>
-            <p class="text-slate-400 text-sm leading-relaxed mb-4">Platform toko online lengkap dengan manajemen produk dan integrasi pembayaran.</p>
-            <a href="#" target="_blank" class="text-emerald-500 text-sm font-semibold hover:text-emerald-700 transition-colors inline-flex items-center gap-1">Lihat Website <span class="text-xs">↗</span></a>
-          </div>
-        </div> -->
-
-      </div>
     </div>
-  </div>
+</div>
+</div>
+</div>
 </section>
 
 <!-- PRICING -->
-<section id="pricing" class="py-24 bg-white">
-  <div class="max-w-5xl mx-auto px-6">
-    <div class="text-center mb-16 fade-slide">
-      <p class="text-xs text-emerald-400 font-semibold tracking-widest uppercase mb-3">Paket</p>
-      <h2 class="font-serif text-3xl md:text-4xl text-slate-800 mb-4">Pilih Paket <span class="italic text-emerald-500">Website</span></h2>
-      <p class="text-slate-400 text-base max-w-md mx-auto">Paket layanan dari <span class="font-semibold text-slate-500">WL Karya Digital</span> yang transparan, tanpa biaya tersembunyi.</p>
+<section id="pricing" class="py-24 md:py-28 bg-white relative">
+    <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200/60 to-transparent"></div>
+    <div class="max-w-5xl mx-auto px-5 md:px-6">
+        <div class="text-center mb-14 md:mb-16 fade-slide">
+            <p class="text-xs text-emerald-500 font-semibold tracking-widest uppercase mb-3">Paket</p>
+            <h2 class="font-serif text-3xl md:text-4xl text-slate-800 mb-4 tracking-tight">
+                Pilih Paket <span class="italic text-emerald-500">Website</span>
+            </h2>
+            <p class="text-slate-400 text-base max-w-md mx-auto leading-relaxed">
+                Paket layanan dari <span class="font-semibold text-slate-500">WL Karya Digital</span> yang transparan, tanpa biaya tersembunyi.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 md:gap-5 items-stretch">
+
+            <!-- Basic -->
+            <div class="pricing-card bg-white rounded-2xl border border-slate-200 p-7 md:p-8 shadow-md shadow-slate-100/60 fade-slide flex flex-col">
+                <div class="flex-1">
+                    <p class="text-xs font-bold tracking-widest text-slate-400 uppercase mb-5">Basic</p>
+                    <div class="mb-6">
+                        <p class="text-xs text-slate-400 mb-1">Mulai dari</p>
+                        <span class="text-3xl font-bold text-emerald-600 tracking-tight">Rp 1.000.000</span>
+                    </div>
+                    <ul class="space-y-3.5 mb-8 text-sm text-slate-500">
+                        <li class="flex items-start gap-2.5">
+                            <span class="check-icon bg-emerald-50 text-emerald-500 mt-0.5">✓</span>
+                            <span>1 Halaman Website</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <span class="check-icon bg-emerald-50 text-emerald-500 mt-0.5">✓</span>
+                            <span>Tombol WhatsApp (langsung chat)</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <span class="check-icon bg-emerald-50 text-emerald-500 mt-0.5">✓</span>
+                            <span>Domain (.com atau .id) 1 Tahun</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <span class="check-icon bg-emerald-50 text-emerald-500 mt-0.5">✓</span>
+                            <span>Revisi 2x</span>
+                        </li>
+                    </ul>
+                </div>
+                <a href="https://wa.me/6289512482772?text=Halo%20Kak%20Wahyu,%20saya%20tertarik%20dengan%20Paket%20Basic%20untuk%20pembuatan%20website.%0A%0ABoleh%20minta%20info%20lebih%20lanjut%20untuk%20proses%20pengerjaannya?" target="_blank"
+                class="block text-center px-6 py-3.5 rounded-full border border-slate-200 text-slate-600 font-semibold hover:border-emerald-300 hover:text-emerald-600 hover:bg-emerald-50/60 transition-all text-sm bg-white btn-lift focus-ring">
+                Mulai Sekarang
+            </a>
+        </div>
+
+        <!-- Professional (Recommended) -->
+        <div class="pricing-card relative bg-gradient-to-b from-emerald-600 via-emerald-700 to-emerald-800 rounded-2xl p-7 md:p-8 shadow-2xl shadow-emerald-200/50 md:scale-[1.04] fade-slide flex flex-col z-10" style="transition-delay:0.1s">
+            <div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
+                <span class="px-5 py-1.5 rounded-full bg-amber-400 text-amber-900 text-xs font-bold tracking-wide shadow-lg shadow-amber-300/40 whitespace-nowrap">✦ Rekomendasi</span>
+            </div>
+            <div class="flex-1">
+                <p class="text-xs font-bold tracking-widest text-emerald-200 uppercase mb-5 mt-1">Professional</p>
+                <div class="mb-6">
+                    <p class="text-xs text-emerald-200 mb-1">Mulai dari</p>
+                    <span class="text-3xl font-bold text-white tracking-tight">Rp 2.500.000</span>
+                </div>
+                <ul class="space-y-3.5 mb-8 text-sm text-emerald-100">
+                    <li class="flex items-start gap-2.5">
+                        <span class="check-icon bg-white/20 text-white mt-0.5">✓</span>
+                        <span>Hingga 5 Halaman Website</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                        <span class="check-icon bg-white/20 text-white mt-0.5">✓</span>
+                        <span>Bisa update konten sendiri (teks, gambar, dll)</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                        <span class="check-icon bg-white/20 text-white mt-0.5">✓</span>
+                        <span>Domain (.com atau .id) & Hosting 1 Tahun</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                        <span class="check-icon bg-white/20 text-white mt-0.5">✓</span>
+                        <span>Revisi 3x</span>
+                    </li>
+                </ul>
+            </div>
+            <a href="https://wa.me/6289512482772?text=Halo%20Kak%20Wahyu,%20saya%20tertarik%20dengan%20Paket%20Professional%20untuk%20pembuatan%20website.%0A%0ASaya%20ingin%20website%20yang%20bisa%20dikelola%20sendiri.%20Bisa%20dibantu%20jelaskan%20detail%20dan%20prosesnya?" target="_blank"
+            class="block text-center px-6 py-3.5 rounded-full bg-white text-emerald-700 font-bold hover:bg-emerald-50 transition-all text-sm shadow-md btn-lift focus-ring">
+            Mulai Sekarang
+        </a>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-6 items-center">
-
-      <!-- Basic -->
-      <div class="pricing-card bg-white rounded-3xl border border-slate-200 p-8 shadow-sm fade-slide">
-        <p class="text-xs font-bold tracking-widest text-slate-400 uppercase mb-4">Basic</p>
-        <div class="mb-6">
-          <p class="text-xs text-slate-500 mb-1">Mulai dari</p>
-          <span class="text-3xl font-bold text-emerald-600">Rp 1.000.000</span>
+    <!-- Custom -->
+    <div class="pricing-card bg-white rounded-2xl border border-slate-200 p-7 md:p-8 shadow-md shadow-slate-100/60 fade-slide flex flex-col" style="transition-delay:0.2s">
+        <div class="flex-1">
+            <p class="text-xs font-bold tracking-widest text-slate-400 uppercase mb-5">Custom Web App</p>
+            <div class="mb-6">
+                <span class="text-3xl font-bold text-emerald-600 tracking-tight">Konsultasi</span>
+            </div>
+            <ul class="space-y-3.5 mb-8 text-sm text-slate-500">
+                <li class="flex items-start gap-2.5">
+                    <span class="check-icon bg-emerald-50 text-emerald-500 mt-0.5">✓</span>
+                    <span>Sistem Sesuai Kebutuhan</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                    <span class="check-icon bg-emerald-50 text-emerald-500 mt-0.5">✓</span>
+                    <span>Dashboard Admin</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                    <span class="check-icon bg-emerald-50 text-emerald-500 mt-0.5">✓</span>
+                    <span>Otomatisasi Proses (booking / pendaftaran / dll)</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                    <span class="check-icon bg-emerald-50 text-emerald-500 mt-0.5">✓</span>
+                    <span>Revisi 5x</span>
+                </li>
+            </ul>
         </div>
-        <ul class="space-y-3 mb-8 text-sm text-slate-500">
-          <li class="flex items-center gap-2"><span class="w-4 h-4 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-400 text-xs flex-shrink-0">✓</span>1 Halaman Website</li>
-          <li class="flex items-center gap-2"><span class="w-4 h-4 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-400 text-xs flex-shrink-0">✓</span>Tombol WhatsApp (langsung chat)</li>
-          <li class="flex items-center gap-2"><span class="w-4 h-4 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-400 text-xs flex-shrink-0">✓</span>Domain (.com atau .id) 1 Tahun</li>
-          <li class="flex items-center gap-2"><span class="w-4 h-4 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-400 text-xs flex-shrink-0">✓</span>Revisi 2x</li>
-        </ul>
-        <a href="https://wa.me/6289512482772?text=Halo%20Kak%20Wahyu,%20saya%20tertarik%20dengan%20Paket%20Basic%20untuk%20pembuatan%20website.%0A%0ABoleh%20minta%20info%20lebih%20lanjut%20untuk%20proses%20pengerjaannya?" target="_blank"
-           class="block text-center px-6 py-3 rounded-full border border-slate-200 text-slate-600 font-semibold hover:border-emerald-300 hover:text-emerald-600 transition-all text-sm">
-          Mulai Sekarang
-        </a>
-      </div>
-
-      <!-- Professional -->
-      <div class="pricing-card relative bg-gradient-to-b from-emerald-600 via-emerald-700 to-emerald-800 rounded-3xl p-8 shadow-2xl shadow-emerald-200/60 md:scale-105 fade-slide" style="transition-delay:0.1s">
-        <div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
-          <span class="px-4 py-1.5 rounded-full bg-amber-400 text-amber-900 text-xs font-bold tracking-wide shadow-md">✦ Rekomendasi</span>
-        </div>
-        <p class="text-xs font-bold tracking-widest text-emerald-200 uppercase mb-4">Professional</p>
-        <div class="mb-6">
-          <p class="text-xs text-emerald-200 mb-1">Mulai dari</p>
-          <span class="text-3xl font-bold text-white">Rp 2.500.000</span>
-        </div>
-        <ul class="space-y-3 mb-8 text-sm text-emerald-100">
-          <li class="flex items-center gap-2"><span class="w-4 h-4 rounded-full bg-white/20 flex items-center justify-center text-white text-xs flex-shrink-0">✓</span>Hingga 5 Halaman Website</li>
-          <li class="flex items-center gap-2"><span class="w-4 h-4 rounded-full bg-white/20 flex items-center justify-center text-white text-xs flex-shrink-0">✓</span>Bisa update konten sendiri (teks, gambar, dll)</li>
-          <li class="flex items-center gap-2"><span class="w-4 h-4 rounded-full bg-white/20 flex items-center justify-center text-white text-xs flex-shrink-0">✓</span>Domain (.com atau .id) & Hosting 1 Tahun</li>
-          <li class="flex items-center gap-2"><span class="w-4 h-4 rounded-full bg-white/20 flex items-center justify-center text-white text-xs flex-shrink-0">✓</span>Revisi 3x</li>
-        </ul>
-        <a href="https://wa.me/6289512482772?text=Halo%20Kak%20Wahyu,%20saya%20tertarik%20dengan%20Paket%20Professional%20untuk%20pembuatan%20website.%0A%0ASaya%20ingin%20website%20yang%20bisa%20dikelola%20sendiri.%20Bisa%20dibantu%20jelaskan%20detail%20dan%20prosesnya?" target="_blank"
-           class="block text-center px-6 py-3 rounded-full bg-white text-emerald-700 font-bold hover:bg-emerald-50 transition-all text-sm shadow-md">
-          Mulai Sekarang
-        </a>
-      </div>
-
-      <!-- Custom -->
-      <div class="pricing-card bg-white rounded-3xl border border-slate-200 p-8 shadow-sm fade-slide" style="transition-delay:0.2s">
-        <p class="text-xs font-bold tracking-widest text-slate-400 uppercase mb-4">Custom Web App</p>
-        <div class="mb-6">
-          <span class="text-3xl font-bold text-emerald-600">Konsultasi</span>
-        </div>
-        <ul class="space-y-3 mb-8 text-sm text-slate-500">
-          <li class="flex items-center gap-2"><span class="w-4 h-4 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-400 text-xs flex-shrink-0">✓</span>Sistem Sesuai Kebutuhan</li>
-          <li class="flex items-center gap-2"><span class="w-4 h-4 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-400 text-xs flex-shrink-0">✓</span>Dashboard Admin</li>
-          <li class="flex items-center gap-2"><span class="w-4 h-4 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-400 text-xs flex-shrink-0">✓</span>Otomatisasi Proses (booking / pendaftaran / dll)</li>
-          <li class="flex items-center gap-2"><span class="w-4 h-4 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-400 text-xs flex-shrink-0">✓</span>Revisi 5x</li>
-        </ul>
         <a href="https://wa.me/6289512482772?text=Halo%20Kak%20Wahyu,%20saya%20ingin%20konsultasi%20untuk%20pembuatan%20sistem%20website%20custom." target="_blank"
-           class="block text-center px-6 py-3 rounded-full border border-slate-200 text-slate-600 font-semibold hover:border-emerald-300 hover:text-emerald-600 transition-all text-sm">
-          Diskusi Dulu
-        </a>
-      </div>
-
-    </div>
-  </div>
+        class="block text-center px-6 py-3.5 rounded-full border border-slate-200 text-slate-600 font-semibold hover:border-emerald-300 hover:text-emerald-600 hover:bg-emerald-50/60 transition-all text-sm bg-white btn-lift focus-ring">
+        Diskusi Dulu
+    </a>
+</div>
+</div>
+</div>
 </section>
 
 <!-- CTA -->
-<section class="py-24 relative overflow-hidden">
-  <div class="absolute inset-0 bg-gradient-to-br from-emerald-600 via-emerald-700 to-teal-700"></div>
-  <div class="absolute -top-20 -right-20 w-80 h-80 blob bg-white/5 blur-3xl"></div>
-  <div class="absolute -bottom-20 -left-20 w-80 h-80 blob2 bg-white/5 blur-3xl"></div>
-  <div class="relative max-w-2xl mx-auto px-6 text-center fade-slide">
-    <h2 class="font-serif text-3xl md:text-5xl text-white mb-5 leading-tight">
-      Siap Membangun<br/><span class="italic opacity-90">Website Anda?</span>
-    </h2>
-    <p class="text-emerald-100 text-base mb-10 leading-relaxed">
-      Konsultasikan kebutuhan Anda bersama <span class="font-semibold">WL Karya Digital</span>. Gratis, tanpa komitmen.
-    </p>
-    <a href="https://wa.me/6289512482772" target="_blank"
-       class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white text-emerald-700 font-bold hover:bg-emerald-50 transition-all shadow-2xl hover:shadow-white/20 text-sm">
-      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.555 4.117 1.528 5.847L.057 23.568a.5.5 0 00.614.614l5.72-1.471A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.877 9.877 0 01-5.031-1.374l-.361-.214-3.741.961.979-3.741-.235-.374A9.86 9.86 0 012.118 12C2.118 6.533 6.533 2.118 12 2.118S21.882 6.533 21.882 12 17.467 21.882 12 21.882z"/></svg>
-      Hubungi via WhatsApp
+<section class="py-24 md:py-28 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-emerald-600 via-emerald-700 to-teal-700"></div>
+    <!-- Decorative elements -->
+    <div class="absolute -top-24 -right-24 w-96 h-96 blob bg-white/4 blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-24 -left-24 w-96 h-96 blob2 bg-white/4 blur-3xl pointer-events-none"></div>
+    <div class="absolute inset-0 opacity-[0.04] pointer-events-none" style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 32px 32px;"></div>
+    <div class="relative max-w-2xl mx-auto px-5 md:px-6 text-center fade-slide">
+        <h2 class="font-serif text-3xl md:text-5xl text-white mb-5 leading-tight tracking-tight">
+            Siap Membangun<br /><span class="italic opacity-90">Website Anda?</span>
+        </h2>
+        <p class="text-emerald-100 text-base mb-10 leading-relaxed max-w-lg mx-auto">
+            Konsultasikan kebutuhan Anda bersama <span class="font-semibold text-white">WL Karya Digital</span>. Gratis, tanpa komitmen.
+        </p>
+        <a href="https://wa.me/6289512482772" target="_blank"
+        class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white text-emerald-700 font-bold hover:bg-emerald-50 transition-all shadow-2xl hover:shadow-white/30 text-sm btn-lift focus-ring">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.555 4.117 1.528 5.847L.057 23.568a.5.5 0 00.614.614l5.72-1.471A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.877 9.877 0 01-5.031-1.374l-.361-.214-3.741.961.979-3.741-.235-.374A9.86 9.86 0 012.118 12C2.118 6.533 6.533 2.118 12 2.118S21.882 6.533 21.882 12 17.467 21.882 12 21.882z"/></svg>
+        Hubungi via WhatsApp
     </a>
-  </div>
+</div>
 </section>
 
 <!-- FOOTER -->
 <footer class="py-10 bg-white border-t border-slate-100">
-  <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-400">
-    <p>© 2026 <span class="font-semibold text-slate-600">Wahyu Luthfi Ramadhan — WL Karya Digital</span>. All rights reserved.</p>
-    <div class="flex items-center gap-6">
-      <a href="https://wa.me/6289512482772" target="_blank" class="hover:text-emerald-500 transition-colors flex items-center gap-1.5">
-        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.555 4.117 1.528 5.847L.057 23.568a.5.5 0 00.614.614l5.72-1.471A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.877 9.877 0 01-5.031-1.374l-.361-.214-3.741.961.979-3.741-.235-.374A9.86 9.86 0 012.118 12C2.118 6.533 6.533 2.118 12 2.118S21.882 6.533 21.882 12 17.467 21.882 12 21.882z"/></svg>
-        WhatsApp
-      </a>
-      <a href="https://www.instagram.com/wahyu.luthfi.r/" target="_blank" class="hover:text-emerald-500 transition-colors flex items-center gap-1.5">
+    <div class="max-w-6xl mx-auto px-5 md:px-6 flex flex-col md:flex-row items-center justify-between gap-5 text-sm text-slate-400">
+        <p class="text-center md:text-left">© 2026 <span class="font-semibold text-slate-600">Wahyu Luthfi Ramadhan — WL Karya Digital</span>. All rights reserved.</p>
+        <div class="flex items-center gap-6">
+            <a href="https://wa.me/6289512482772" target="_blank"
+            class="hover:text-emerald-500 transition-colors flex items-center gap-1.5 font-medium">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.555 4.117 1.528 5.847L.057 23.568a.5.5 0 00.614.614l5.72-1.471A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.877 9.877 0 01-5.031-1.374l-.361-.214-3.741.961.979-3.741-.235-.374A9.86 9.86 0 012.118 12C2.118 6.533 6.533 2.118 12 2.118S21.882 6.533 21.882 12 17.467 21.882 12 21.882z"/></svg>
+            WhatsApp
+        </a>
+        <a href="https://www.instagram.com/wahyu.luthfi.r/" target="_blank"
+        class="hover:text-emerald-500 transition-colors flex items-center gap-1.5 font-medium">
         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
         Instagram
-      </a>
-    </div>
-  </div>
+    </a>
+</div>
+</div>
 </footer>
 
 <script>
-  // Slider
-  let current = 0;
-  const track = document.getElementById('sliderTrack');
-  const dots = document.getElementById('sliderDots').querySelectorAll('button');
+    // Slider
+    let current = 0;
+    const track = document.getElementById('sliderTrack');
+    const dots = document.getElementById('sliderDots').querySelectorAll('button');
+    let autoSlideInterval;
 
-  function goSlide(n) {
-    current = n;
-    track.style.transform = `translateX(-${n * 100}%)`;
-    dots.forEach((d, i) => {
-      d.classList.toggle('w-6', i === n);
-      d.classList.toggle('w-2', i !== n);
-      d.classList.toggle('bg-white', i === n);
-      d.classList.toggle('bg-white/50', i !== n);
+    function goSlide(n) {
+        current = n;
+        track.style.transform = `translateX(-${n * 100}%)`;
+        dots.forEach((d, i) => {
+            d.classList.toggle('active', i === n);
+        });
+    }
+
+    function nextSlide() {
+        goSlide((current + 1) % 3);
+    }
+
+    function resetAutoSlide() {
+        clearInterval(autoSlideInterval);
+        autoSlideInterval = setInterval(nextSlide, 4000);
+    }
+
+    // Initialize auto-slide
+    autoSlideInterval = setInterval(nextSlide, 4000);
+
+    // Expose goSlide globally and reset timer on manual click
+    window.goSlide = function(n) {
+        goSlide(n);
+        resetAutoSlide();
+    };
+
+    // Fade scroll observer
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
+
+    document.querySelectorAll('.fade-slide').forEach(el => observer.observe(el));
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    menuBtn.addEventListener('click', () => {
+        const isOpen = !mobileMenu.classList.contains('hidden');
+        if (isOpen) {
+            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('mobile-menu-enter');
+            menuBtn.classList.remove('open');
+        } else {
+            mobileMenu.classList.remove('hidden');
+            mobileMenu.classList.add('mobile-menu-enter');
+            menuBtn.classList.add('open');
+        }
     });
-  }
 
-  setInterval(() => goSlide((current + 1) % 3), 4000);
-
-  // Fade scroll
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.fade-slide').forEach(el => observer.observe(el));
+    // Close mobile menu on link click
+    mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('mobile-menu-enter');
+            menuBtn.classList.remove('open');
+        });
+    });
 </script>
 </body>
 </html>
